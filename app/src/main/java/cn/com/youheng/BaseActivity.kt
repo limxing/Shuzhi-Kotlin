@@ -43,7 +43,6 @@ abstract class BaseActivity : AppCompatActivity() {
         setContentView(getLayoutId())
         if (title_top != null) {
             UIUtils.statusBarWithTitleSetHeight(title_top)
-
         }
         initView()
         initData()
@@ -55,7 +54,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     protected open fun initWindow() {
-
+        UIUtils.statusBarBlack(this)
     }
 
     private val filter = IntentFilter(INTENT_FILTER_NET_CHANGED)

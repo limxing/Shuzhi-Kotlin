@@ -11,42 +11,18 @@
         android:id="@+id/main_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="@dimen/main_tab_height"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="wechat"
-            android:text="微信登录"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/点击测试网络"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:onClick="testNet"
-            android:text="点击测试网络"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="@dimen/main_tab_height"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent">
 
@@ -62,18 +38,17 @@
             android:orientation="horizontal">
 
             <RadioButton
-
                 android:id="@+id/main_tab_home"
                 style="@style/MainRadioButton"
                 android:checked="true"
-                android:drawableTop="@drawable/main_tab_find"
-                android:text="@string/main_tab_find" />
+                android:drawableTop="@drawable/main_tab_home"
+                android:text="@string/main_tab_home" />
 
             <RadioButton
                 android:id="@+id/main_tab_find"
                 style="@style/MainRadioButton"
-                android:drawableTop="@drawable/main_tab_vip"
-                android:text="@string/main_tab_vip" />
+                android:drawableTop="@drawable/main_tab_find"
+                android:text="@string/main_tab_find" />
 
             <RadioButton
                 android:id="@+id/main_tab_vip"

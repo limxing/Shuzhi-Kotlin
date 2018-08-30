@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#fff</color>
+    <color name="colorPrimaryDark">#fff</color>
+    <color name="colorAccent">#d81e06</color>
     <color name="index_tab_normal">#8a8a8a</color>
     <color name="index_tab_checked">#d81e06</color>
+    <color name="title_text">#232323</color>
 </resources>
