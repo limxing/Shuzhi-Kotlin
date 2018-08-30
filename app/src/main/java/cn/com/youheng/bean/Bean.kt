@@ -1,4 +1,4 @@
-package cn.com.youheng.wechatdemo.bean
+package cn.com.youheng.bean
 
 /**
  * Created by laplace on 2018/8/29.

@@ -1,4 +1,4 @@
-package cn.com.youheng.wechatdemo
+package cn.com.youheng
 
 import android.app.Activity
 import android.content.Intent

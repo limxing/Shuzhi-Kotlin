@@ -8,7 +8,7 @@ import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import cn.com.youheng.wechatdemo.Api
+import cn.com.youheng.Api
 
 /**
  * Created by laplace on 2018/8/15.

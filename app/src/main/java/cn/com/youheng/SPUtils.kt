@@ -1,7 +1,7 @@
 package cn.com.youheng.utils
 
 import android.annotation.SuppressLint
-import cn.com.youheng.wechatdemo.ProjectApplication
+import cn.com.youheng.ProjectApplication
 
 /**
  * Created by limxing on 2018/4/21.

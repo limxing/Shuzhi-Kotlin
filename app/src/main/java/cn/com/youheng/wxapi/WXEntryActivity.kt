@@ -8,7 +8,7 @@ import com.tencent.mm.opensdk.modelbase.BaseReq
 import com.tencent.mm.opensdk.modelbase.BaseResp
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler
 import com.tencent.mm.opensdk.modelmsg.SendAuth
-import cn.com.youheng.wechatdemo.ProjectApplication
+import cn.com.youheng.ProjectApplication
 import com.tuokejingji.tz.utils.NetUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

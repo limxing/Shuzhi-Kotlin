@@ -1,6 +1,6 @@
-package cn.com.youheng.wechatdemo
+package cn.com.youheng
 
-import cn.com.youheng.wechatdemo.bean.City
+import cn.com.youheng.bean.City
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
