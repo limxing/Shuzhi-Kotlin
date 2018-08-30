@@ -1,14 +1,11 @@
-package com.tuokejingji.tz.utils
+package cn.com.youheng
 
 import cn.com.youheng.utils.SPUtils
 import com.orhanobut.logger.Logger
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import cn.com.youheng.Api
 
 /**
  * Created by laplace on 2018/8/15.
@@ -46,7 +43,7 @@ class NetUtil {
 
     companion object {
         val instance by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) { NetUtil() }
-        val baseUrl = "http://192.168.111.144:5000"
+        val baseUrl = "http://192.168.111.186:5000"
 
     }
 }

@@ -1,15 +1,14 @@
-package cn.com.youheng
+package cn.com.youheng.activity
 
-import android.app.Activity
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import cn.com.youheng.NetUtil
+import cn.com.youheng.ProjectApplication
+import cn.com.youheng.R
 import com.google.gson.Gson
 import com.orhanobut.logger.Logger
 import com.tencent.mm.opensdk.modelmsg.SendAuth
-import com.tencent.mm.opensdk.openapi.WXAPIFactory
-import com.tuokejingji.tz.utils.NetUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">有恒业务管理</string>
+    <string name="main_tab_mine">我的</string>
+    <string name="main_tab_cart">购物车</string>
+    <string name="main_tab_vip">会员</string>
+    <string name="main_tab_home">首页</string>
 </resources>

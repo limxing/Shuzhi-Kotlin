@@ -9,12 +9,10 @@ import com.tencent.mm.opensdk.modelbase.BaseResp
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler
 import com.tencent.mm.opensdk.modelmsg.SendAuth
 import cn.com.youheng.ProjectApplication
-import com.tuokejingji.tz.utils.NetUtil
+import cn.com.youheng.NetUtil
+import cn.com.youheng.utils.gson
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.net.URL
 
 
 /**
@@ -43,7 +41,7 @@ class WXEntryActivity : Activity(), IWXAPIEventHandler {
                             ?.subscribeOn(Schedulers.io())
                             ?.observeOn(AndroidSchedulers.mainThread())
                             ?.subscribe({
-                                Logger.json(it.toString())
+                                Logger.json(gson.toJson(it))
                             }) {
                                 it.printStackTrace()
                             }
