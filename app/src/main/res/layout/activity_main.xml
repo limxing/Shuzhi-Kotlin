@@ -63,20 +63,26 @@
 
             <RadioButton
 
-                android:id="@+id/main_tab_market"
+                android:id="@+id/main_tab_home"
                 style="@style/MainRadioButton"
                 android:checked="true"
-                android:drawableTop="@drawable/main_tab_home"
-                android:text="@string/main_tab_home" />
+                android:drawableTop="@drawable/main_tab_find"
+                android:text="@string/main_tab_find" />
 
             <RadioButton
-                android:id="@+id/main_tab_strategy"
+                android:id="@+id/main_tab_find"
                 style="@style/MainRadioButton"
                 android:drawableTop="@drawable/main_tab_vip"
                 android:text="@string/main_tab_vip" />
 
             <RadioButton
-                android:id="@+id/main_tab_news"
+                android:id="@+id/main_tab_vip"
+                style="@style/MainRadioButton"
+                android:drawableTop="@drawable/main_tab_vip"
+                android:text="@string/main_tab_vip" />
+
+            <RadioButton
+                android:id="@+id/main_tab_cart"
                 style="@style/MainRadioButton"
                 android:drawableTop="@drawable/main_tab_cart"
                 android:text="@string/main_tab_cart" />
