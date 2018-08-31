@@ -3,6 +3,7 @@ package cn.com.youheng.wxapi
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.content.LocalBroadcastManager
 import com.orhanobut.logger.Logger
 import com.tencent.mm.opensdk.modelbase.BaseReq
 import com.tencent.mm.opensdk.modelbase.BaseResp
@@ -10,6 +11,8 @@ import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler
 import com.tencent.mm.opensdk.modelmsg.SendAuth
 import cn.com.youheng.ProjectApplication
 import cn.com.youheng.NetUtil
+import cn.com.youheng.utils.INTENT_FILTER_LOGIN_SUCCESS
+import cn.com.youheng.utils.SPUtils
 import cn.com.youheng.utils.gson
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -39,9 +42,13 @@ class WXEntryActivity : Activity(), IWXAPIEventHandler {
                     Logger.i(code)
                     NetUtil.instance.api?.getToken(code)
                             ?.subscribeOn(Schedulers.io())
+                            ?.filter { it.code == 200 }
                             ?.observeOn(AndroidSchedulers.mainThread())
                             ?.subscribe({
                                 Logger.json(gson.toJson(it))
+                                NetUtil.instance.token = it.msg
+                                SPUtils.saveString("token", it.msg ?: "")
+                                LocalBroadcastManager.getInstance(this).sendBroadcast(INTENT_FILTER_LOGIN_SUCCESS)
                             }) {
                                 it.printStackTrace()
                             }

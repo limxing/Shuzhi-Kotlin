@@ -28,10 +28,13 @@ import com.orhanobut.logger.Logger
 import com.tbruyelle.rxpermissions2.RxPermissions
 import cn.com.youheng.ProjectApplication
 import cn.com.youheng.R
+import cn.com.youheng.utils.user
 import io.reactivex.disposables.Disposable
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import java.io.File
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 import java.sql.Timestamp
 import java.util.regex.Pattern
 
@@ -73,7 +76,6 @@ fun View.isGone(): Boolean {
 }
 
 
-
 fun SwipeRefreshLayout.setColors() {
     setColorSchemeResources(R.color.colorAccent)
 }
@@ -95,8 +97,6 @@ fun Disposable.addTo(bag: ArrayList<Disposable>) {
     if (!bag.contains(this))
         bag.add(this)
 }
-
-
 
 
 fun Fragment.getLayoutId(): Int {
@@ -187,6 +187,38 @@ fun Context.showMessageDialog(msg: String) {
     alert.setMessage(msg)
     alert.setNegativeButton("确实", null)
     alert.create().show()
+}
+
+/**
+ * 字符串MD5加密
+ */
+fun String.md5(): String {
+    try {
+        //获取md5加密对象
+        val instance: MessageDigest = MessageDigest.getInstance("MD5")
+        //对字符串加密，返回字节数组
+        val digest: ByteArray = instance.digest(this.toByteArray())
+        var sb: StringBuffer = StringBuffer()
+        for (b in digest) {
+            //获取低八位有效值
+            var i: Int = b.toInt() and 0xff
+            //将整数转化为16进制
+            var hexString = Integer.toHexString(i)
+            if (hexString.length < 2) {
+                //如果是一位的话，补0
+                hexString = "0" + hexString
+            }
+            sb.append(hexString)
+        }
+        return sb.toString()
+    } catch (e: NoSuchAlgorithmException) {
+        e.printStackTrace()
+    }
+    return ""
+}
+
+fun File.md5Name(): String {
+    return "${user?.uuid}_$nameWithoutExtension".md5() + "." + name.substringAfterLast('.')
 }
 
 

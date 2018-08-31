@@ -12,6 +12,8 @@ import android.text.TextUtils
 import java.io.BufferedReader
 import java.io.FileReader
 import java.io.IOException
+import com.netease.cloud.nos.android.core.AcceleratorConf
+import com.netease.cloud.nos.android.core.WanAccelerator
 
 
 /**
@@ -26,6 +28,11 @@ class ProjectApplication : Application() {
         wxApi = WXAPIFactory.createWXAPI(applicationContext, WX_APP_ID, true)
         wxApi?.registerApp(WX_APP_ID)
         init_bugly()
+        init_wangyi()
+    }
+
+    private fun init_wangyi() {
+        WanAccelerator.setConf(AcceleratorConf())
     }
 
     private fun init_bugly() {

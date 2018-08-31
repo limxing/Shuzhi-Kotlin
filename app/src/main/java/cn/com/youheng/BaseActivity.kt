@@ -47,7 +47,7 @@ abstract class BaseActivity : AppCompatActivity() {
         initView()
         initData()
 
-        filter.addAction(INTENT_FILTER_LOGIN_SUCCESS)
+        filter.addAction(INTENT_FILTER_LOGIN_SUCCESS.action)
         filter.addAction(SELECTION_NEED_FRESH)
         filter.addAction(SELECTION_NEED_REFRESH)
         LocalBroadcastManager.getInstance(this).registerReceiver(localReceiver, filter)

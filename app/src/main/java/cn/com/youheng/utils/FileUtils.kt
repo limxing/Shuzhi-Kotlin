@@ -1,9 +1,13 @@
 package cn.com.youheng.utils
 
+import android.content.ContentResolver
 import android.content.Context
 import android.content.res.AssetManager
+import android.net.Uri
 import android.os.Environment
+import android.provider.MediaStore
 import cn.com.youheng.ProjectApplication
+import com.orhanobut.logger.Logger
 
 import java.io.*
 import java.util.HashMap
@@ -15,7 +19,7 @@ import java.util.Properties
  */
 object FileUtils {
 
-    private val ROOT_DIR = "Tuoke"
+    private val ROOT_DIR = "Shuzhi"
     private val DOWNLOAD_DIR = "download"
     private val CACHE_DIR = "cache"
     private val ICON_DIR = "icon"
@@ -35,6 +39,9 @@ object FileUtils {
     /**   */
     val cacheDir: String?
         get() = getDir(CACHE_DIR)
+
+    val tempImage: String?
+        get() = getDir(CACHE_DIR) + "/temp.jpg"
 
     /**   */
     val iconDir: String?
@@ -380,7 +387,7 @@ object FileUtils {
         val children = assetManager.list(dirname)
         for (c in children) {
 
-           val child = dirname + '/'.toString() + c
+            val child = dirname + '/'.toString() + c
             val grandChildren = assetManager.list(child)
             if (0 == grandChildren.size)
                 copyAssetFileToFiles(context, child, file)
@@ -401,5 +408,31 @@ object FileUtils {
         val os = FileOutputStream(of)
         os.write(buffer)
         os.close()
+    }
+
+    /**
+     * 从uri获取路径
+     */
+    fun getRealFilePath(context: Context, uri: Uri?): String? {
+        if (null == uri) return null
+        val scheme = uri.scheme
+        var data: String? = null
+        if (scheme == null)
+            data = uri.path
+        else if (ContentResolver.SCHEME_FILE == scheme) {
+            data = uri.path
+        } else if (ContentResolver.SCHEME_CONTENT == scheme) {
+            val cursor = context.contentResolver.query(uri, arrayOf(MediaStore.Images.ImageColumns.DATA), null, null, null)
+            if (null != cursor) {
+                if (cursor.moveToFirst()) {
+                    val index = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
+                    if (index > -1) {
+                        data = cursor.getString(index)
+                    }
+                }
+                cursor.close()
+            }
+        }
+        return data
     }
 }

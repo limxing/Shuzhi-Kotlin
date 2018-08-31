@@ -35,8 +35,8 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
@@ -49,13 +49,22 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-    implementation 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.1.1'//监听点击按钮或其他view的包
-    implementation 'com.android.support:design:27.1.1'//tablayout依赖包
-    implementation 'com.github.bumptech.glide:glide:4.7.1'//图片加载1
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'//图片加载2
-    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'//运行时权限
-    implementation 'org.greenrobot:greendao:3.2.2'//数据库操作
-    compile 'com.tencent.bugly:crashreport:latest.release' //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
-    compile 'com.tencent.bugly:nativecrashreport:latest.release' //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
-
+    implementation 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.1.1'
+    //监听点击按钮或其他view的包
+    implementation 'com.android.support:design:27.1.1'
+    //tablayout依赖包
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    //图片加载1
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    //图片加载2
+    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
+    //运行时权限
+    implementation 'org.greenrobot:greendao:3.2.2'
+    //数据库操作
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    implementation files('libs/nos-android-sdk-1.0.0.jar')
+    implementation 'top.zibin:Luban:1.1.8'//鲁班图片压缩
 }

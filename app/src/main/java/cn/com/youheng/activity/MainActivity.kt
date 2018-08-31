@@ -1,5 +1,6 @@
 package cn.com.youheng.activity
 
+import android.Manifest
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -7,9 +8,12 @@ import cn.com.youheng.BaseActivity
 import cn.com.youheng.NetUtil
 import cn.com.youheng.ProjectApplication
 import cn.com.youheng.R
+import cn.com.youheng.extensions.addTo
+import cn.com.youheng.extensions.toast
 import cn.com.youheng.fragment.*
 import com.google.gson.Gson
 import com.orhanobut.logger.Logger
+import com.tbruyelle.rxpermissions2.RxPermissions
 import com.tencent.mm.opensdk.modelmsg.SendAuth
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -17,7 +21,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
     override fun initData() {
-
+        RxPermissions(this).request(Manifest.permission.WRITE_EXTERNAL_STORAGE).subscribe({
+            if (it)
+                toast("授权读写本地存储")
+            else {
+                toast("拒绝读写本地存储")
+            }
+        }) {
+        }.addTo(disposeBag)
     }
 
     override fun initView() {
@@ -46,21 +57,9 @@ class MainActivity : BaseActivity() {
     }
 
 
-    fun wechat(view: View) {
-        if (ProjectApplication.wxApi?.isWXAppInstalled == true) {
-            val req = SendAuth.Req()
-            req.scope = "snsapi_userinfo"
-            req.state = "wechat_sdk_demo_test"
-            ProjectApplication.wxApi?.sendReq(req)
-        } else {
-            Logger.i("未安装微信")
-        }
-
-    }
-
     fun testNet(view: View) {
         NetUtil.instance.api?.let {
-            it.getTest().subscribeOn(Schedulers.io())
+            it.getAllCity(0).subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({
                         Logger.json(Gson().toJson(it))

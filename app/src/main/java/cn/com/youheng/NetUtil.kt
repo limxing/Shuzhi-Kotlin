@@ -25,7 +25,7 @@ class NetUtil {
                     val r = it.request()
                             .newBuilder()
                             .addHeader("AppType", "Android")
-                            .addHeader("Authorization", "Bearer $token")
+                            .addHeader("Authorization", "token $token")
                             .build()
                     Logger.i("请求地址：${r?.url()} 请求类型：${r?.method()}")
                     it.proceed(r)
@@ -44,6 +44,7 @@ class NetUtil {
     companion object {
         val instance by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) { NetUtil() }
         val baseUrl = "http://192.168.111.186:5000"
+        val imageUrl = "http://img.leefeng.top/"
 
     }
 }
