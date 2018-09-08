@@ -12,6 +12,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
 /**
@@ -39,6 +40,8 @@ class WelcomeActivity : BaseActivity() {
                         finish()
                     }
                 }.addTo(disposeBag)
+
+//        OkHttpClient.Builder().build().newCall().execute()
 
     }
 

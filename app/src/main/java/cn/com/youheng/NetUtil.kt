@@ -43,7 +43,7 @@ class NetUtil {
 
     companion object {
         val instance by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) { NetUtil() }
-        val baseUrl = "http://192.168.111.186:5000"
+        val baseUrl = "http://192.168.31.221:5000"
         val imageUrl = "http://img.leefeng.top/"
 
     }

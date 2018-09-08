@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.orhanobut.logger.Logger
 import com.tencent.mm.opensdk.modelmsg.SendAuth
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_mine.*
 
@@ -63,11 +64,13 @@ class MineFragment : BaseFragment() {
     }
 
     override fun localReceiverComing(intent: Intent?) {
-        Logger.i("${intent == INTENT_FILTER_LOGIN_SUCCESS}")
         if (intent == INTENT_FILTER_LOGIN_SUCCESS) {
             wechat.gone()
             api?.let {
-                it.getUser().subscribeOn(Schedulers.io()).filter { it.code == 200 }.subscribe({ user = it.data }) {
+                it.getUser().subscribeOn(Schedulers.io()).filter { it.code == 200 }.observeOn(AndroidSchedulers.mainThread()).subscribe({
+                    user = it.data
+                    initData()
+                }) {
 
                 }
             }
